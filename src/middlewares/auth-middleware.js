@@ -24,7 +24,7 @@ const authenticateUser = async (req, res, next) => {
 	}
 }
 
-const authorizationUser = async (req, res, next) {
+const authorizationUser = async (req, res, next) => {
 
 	try {
 

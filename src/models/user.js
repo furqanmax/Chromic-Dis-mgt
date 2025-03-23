@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
 userSchema.pre('save', (next) => {
 
 	try {
-		cont user = this;
+		const user = this;
 
 		const passwordHash = createHmac('sha256', 'anysecretkey').update(user.password).digest('hex');
 		this.password = passwordHash;
