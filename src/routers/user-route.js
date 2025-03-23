@@ -3,4 +3,5 @@ const {getPatentList} = require('./controllers/user-controller');
 
 const router = express.Router();
 
-router.get('/', )
+router.get('/', getPatentList);
+
