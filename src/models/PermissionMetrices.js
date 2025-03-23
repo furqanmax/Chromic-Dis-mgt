@@ -5,6 +5,6 @@ const permissionSchema = new mongoose.Schema({
 	role: {type: String, require: true}
 }, {timestams: true});
 
-const PermissionMetrices = mongoose.model('users', permissionSchema);
+const PermissionMetrices = mongoose.model('permissions', permissionSchema);
 
 module.exports = PermissionMetrices;
