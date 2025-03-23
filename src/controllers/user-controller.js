@@ -27,7 +27,7 @@ const register = async (req, res) => {
 			res.status(406).json(failedRes(results));
 		}
 
-		const patients = await User.create({email: req.body.email, password: req.body.password});
+		const patients = await User.create({email: req.body.email, password: req.body.password, role: req.body.type});
 
 		res.status(201).json(successRes(patients));
 	} catch(e) {

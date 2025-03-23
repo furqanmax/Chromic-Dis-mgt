@@ -5,8 +5,8 @@ const {body, param} = require('express-validator');
 
 const router = express.Router();
 
-router.post('/', [body('email').notEmpty().isEmail(), body('password').notEmpty().isString()], register);
-router.post('/', [body('email').notEmpty().isEmail(), body('password').notEmpty().isString()], login);
+router.post('/register', [body('email').notEmpty().isEmail(), body('password').notEmpty().isString(), , body('type').notEmpty().in(['patient','doctor'])], register);
+router.post('/login', [body('email').notEmpty().isEmail(), body('password').notEmpty().isString()], login);
 router.get('/list', [authenticateUser, authorizationUser], getPatentList);
 router.get('/:uid', [param('uid').notEmpty().isString(), authenticateUser, authorizationUser], getUserById);
 
