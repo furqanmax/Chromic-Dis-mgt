@@ -46,8 +46,26 @@ const getPatentList = async (req, res) => {
 	}
 };
 
+const getUserById = async (req, res) => {
+
+	try {
+
+		const results = validationResult(req);
+		if (!results.isEmpty()) {
+			res.status(406).json(failedRes(results));
+		}
+
+		const user = await User.findById(req.params.uid);
+
+		res.status(200).json(successRes(user));
+	} catch(e) {
+		res.status(500).json(failedRes([e.message]));
+	}
+};
+
 module.exports = {
 	login,
 	register,
-	getPatentList
+	getPatentList,
+	getUserById
 };

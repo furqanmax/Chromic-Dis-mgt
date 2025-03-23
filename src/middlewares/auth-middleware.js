@@ -36,7 +36,7 @@ const authorizationUser = async (req, res, next) {
 		}
 
 		const role = await User.find({email: email});
-		const access = await PermissionMetrices.find({role: role, resourceKey});
+		const access = await PermissionMetrices.findOne({role: role, resourceKey: resourceKey});
 
 		if (!access) {
 			res.status(403).json(failedRes({error: "not authorized to access resource"}));
@@ -49,3 +49,8 @@ const authorizationUser = async (req, res, next) {
 		res.status(403).json(failedRes({error: "Error in authorization"}));
 	}
 }
+
+module.exports = {
+	authenticateUser,
+	authorizationUser
+};
